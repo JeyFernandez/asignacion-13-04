@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
 
 @Injectable()
@@ -26,7 +25,7 @@ export class ProductService {
     return this.prudctRpsitory.findOneBy({id});
   }
 
-  async update(id: string, updateProductDto: UpdateProductDto) {
+  async update(id: string, updateProductDto: CreateProductDto) {
     const Product = await this.findOne(id)
     const upadateProduct = await this.prudctRpsitory.merge(
       Product,
